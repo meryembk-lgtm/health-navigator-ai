@@ -2,6 +2,10 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import imgBloodPressure from "@/assets/product-blood-pressure.jpg";
+import imgStethoscope from "@/assets/product-stethoscope.jpg";
+import imgOximeter from "@/assets/product-oximeter.jpg";
+import imgSurgical from "@/assets/product-surgical.jpg";
 
 const products = [
   {
@@ -11,6 +15,7 @@ const products = [
     rating: 4.9,
     certified: true,
     badge: "Best Seller",
+    image: imgBloodPressure,
   },
   {
     name: "Professional Stethoscope Pro",
@@ -19,6 +24,7 @@ const products = [
     rating: 4.8,
     certified: true,
     badge: "New",
+    image: imgStethoscope,
   },
   {
     name: "Pulse Oximeter HD",
@@ -27,6 +33,7 @@ const products = [
     rating: 4.7,
     certified: true,
     badge: null,
+    image: imgOximeter,
   },
   {
     name: "Surgical Instrument Set",
@@ -35,6 +42,7 @@ const products = [
     rating: 5.0,
     certified: true,
     badge: "Premium",
+    image: imgSurgical,
   },
 ];
 
@@ -63,10 +71,13 @@ const ProductsSection = () => (
             transition={{ delay: i * 0.1 }}
             className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all hover:shadow-medical"
           >
-            <div className="relative flex h-48 items-center justify-center bg-muted">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-highlight">
-                <ShieldCheck className="h-10 w-10 text-primary" />
-              </div>
+            <div className="relative h-48 overflow-hidden bg-muted">
+              <img
+                src={p.image}
+                alt={p.name}
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
               {p.badge && (
                 <Badge className="absolute left-3 top-3 bg-primary text-primary-foreground">
                   {p.badge}
